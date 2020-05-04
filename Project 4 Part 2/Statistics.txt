@@ -1,0 +1,1 @@
+2 partsupp 900000 1 ps_partkey 100000 part 150000 2 p_partkey 150000 p_size 40 1 part#partsupp# 1.35e+11 

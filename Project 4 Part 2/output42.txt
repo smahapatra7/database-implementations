@@ -1,0 +1,345 @@
+TC1
+ 
+** IMPORTANT: MAKE SURE THE INFORMATION BELOW IS CORRECT **
+ catalog location: 	catalog
+ tpch files dir: 	/cise/tmp/dbi_sp11/DATA/1G/
+ heap files dir: 	
+ 
+
+****** Select Operation : File *******
+
+Input DB File: nation
+Output Pipe: 0
+Output Schema: 
+	n.n_nationkey: int
+	n.n_name: string
+	n.n_regionkey: int
+	n.n_comment: string
+Select CNF : 
+	( Att 1 from left record = Att 0 from literal record (String)) 
+
+
+****** Project Operation ******
+
+Input Pipe: 0
+Output Pipe: 1
+Output Schema: 
+	n.n_nationkey: int
+Attributes to keep: 
+	0, 
+
+***************************************************************************************************************************
+TC2
+ 
+** IMPORTANT: MAKE SURE THE INFORMATION BELOW IS CORRECT **
+ catalog location: 	catalog
+ tpch files dir: 	/cise/tmp/dbi_sp11/DATA/1G/
+ heap files dir: 	
+ 
+
+****** Select Operation : File *******
+
+Input DB File: nation
+Output Pipe: 1
+Output Schema: 
+	n.n_nationkey: int
+	n.n_name: string
+	n.n_regionkey: int
+	n.n_comment: string
+Select CNF : 
+	( Att 0 from left record > Att 0 from literal record (Int)) 
+
+
+****** Join Operation ******
+
+Left Input Pipe: 1
+Right Input Pipe: 0
+Output Pipe: 2
+Output Schema: 
+	n.n_nationkey: int
+	n.n_name: string
+	n.n_regionkey: int
+	n.n_comment: string
+	r.r_regionkey: int
+	r.r_name: string
+	r.r_comment: string
+Select CNF:	
+	( Att 2 from left record = Att 0 from right record (Int)) 
+
+
+****** Select Operation : File *******
+
+Input DB File: region
+Output Pipe: 0
+Output Schema: 
+	r.r_regionkey: int
+	r.r_name: string
+	r.r_comment: string
+Select CNF : 
+	
+
+****** Project Operation ******
+
+Input Pipe: 2
+Output Pipe: 3
+Output Schema: 
+	n.n_name: string
+Attributes to keep: 
+	1, 
+
+***************************************************************************************************************************
+TC3
+ 
+** IMPORTANT: MAKE SURE THE INFORMATION BELOW IS CORRECT **
+ catalog location: 	catalog
+ tpch files dir: 	/cise/tmp/dbi_sp11/DATA/1G/
+ heap files dir: 	
+ 
+
+****** Select Operation : File *******
+
+Input DB File: nation
+Output Pipe: 1
+Output Schema: 
+	n.n_nationkey: int
+	n.n_name: string
+	n.n_regionkey: int
+	n.n_comment: string
+Select CNF : 
+	( Att 1 from left record = Att 0 from literal record (String)) 
+
+
+****** Join Operation ******
+
+Left Input Pipe: 2
+Right Input Pipe: 0
+Output Pipe: 2
+Output Schema: 
+	n.n_nationkey: int
+	n.n_name: string
+	n.n_regionkey: int
+	n.n_comment: string
+	r.r_regionkey: int
+	r.r_name: string
+	r.r_comment: string
+Select CNF:	
+	( Att 2 from left record = Att 0 from right record (Int)) 
+
+
+****** Select Operation : File *******
+
+Input DB File: region
+Output Pipe: 0
+Output Schema: 
+	r.r_regionkey: int
+	r.r_name: string
+	r.r_comment: string
+Select CNF : 
+	
+
+****** Sum Operation ******
+
+Input Pipe:	0
+Output Pipe: 3
+Output Schema: 
+	sum: double
+Sum Function: 
+
+
+****** Project Operation ******
+
+Input Pipe: 3
+Output Pipe: 4
+Output Schema: 
+	sum: double
+Attributes to keep: 
+	0, 
+
+***************************************************************************************************************************
+TC4
+ 
+** IMPORTANT: MAKE SURE THE INFORMATION BELOW IS CORRECT **
+ catalog location: 	catalog
+ tpch files dir: 	/cise/tmp/dbi_sp11/DATA/1G/
+ heap files dir: 	
+ 
+
+****** Select Operation : File *******
+
+Input DB File: nation
+Output Pipe: 1
+Output Schema: 
+	n.n_nationkey: int
+	n.n_name: string
+	n.n_regionkey: int
+	n.n_comment: string
+Select CNF : 
+	( Att 1 from left record = Att 0 from literal record (String)) 
+
+
+****** Join Operation ******
+
+Left Input Pipe: 1
+Right Input Pipe: 0
+Output Pipe: 2
+Output Schema: 
+	n.n_nationkey: int
+	n.n_name: string
+	n.n_regionkey: int
+	n.n_comment: string
+	r.r_regionkey: int
+	r.r_name: string
+	r.r_comment: string
+Select CNF:	
+	( Att 2 from left record = Att 0 from right record (Int)) 
+
+
+****** Select Operation : File *******
+
+Input DB File: region
+Output Pipe: 0
+Output Schema: 
+	r.r_regionkey: int
+	r.r_name: string
+	r.r_comment: string
+Select CNF : 
+	
+
+****** GroupBy Operation ******
+
+Input Pipe:	2
+Output Pipe: 3
+Output Schema: 
+	sum: double
+	n.n_regionkey: int
+Group By OrderMaker: 
+NumAtts =     1
+  0:     2 Int
+
+Group By Function: 
+
+
+****** Project Operation ******
+
+Input Pipe: 3
+Output Pipe: 4
+Output Schema: 
+	sum: double
+Attributes to keep: 
+	0, 
+
+***************************************************************************************************************************
+TC5
+ 
+** IMPORTANT: MAKE SURE THE INFORMATION BELOW IS CORRECT **
+ catalog location: 	catalog
+ tpch files dir: 	/cise/tmp/dbi_sp11/DATA/1G/
+ heap files dir: 	
+ 
+
+****** Select Operation : File *******
+
+Input DB File: nation
+Output Pipe: 2
+Output Schema: 
+	n.n_nationkey: int
+	n.n_name: string
+	n.n_regionkey: int
+	n.n_comment: string
+Select CNF : 
+	( Att 0 from left record > Att 0 from literal record (Int)) 
+
+
+****** Join Operation ******
+
+Left Input Pipe: 2
+Right Input Pipe: 1
+Output Pipe: 3
+Output Schema: 
+	n.n_nationkey: int
+	n.n_name: string
+	n.n_regionkey: int
+	n.n_comment: string
+	r.r_regionkey: int
+	r.r_name: string
+	r.r_comment: string
+Select CNF:	
+	( Att 2 from left record = Att 0 from right record (Int)) 
+
+
+****** Select Operation : File *******
+
+Input DB File: region
+Output Pipe: 1
+Output Schema: 
+	r.r_regionkey: int
+	r.r_name: string
+	r.r_comment: string
+Select CNF : 
+	
+
+****** Join Operation ******
+
+Left Input Pipe: 3
+Right Input Pipe: 0
+Output Pipe: 4
+Output Schema: 
+	n.n_nationkey: int
+	n.n_name: string
+	n.n_regionkey: int
+	n.n_comment: string
+	r.r_regionkey: int
+	r.r_name: string
+	r.r_comment: string
+	c.c_custkey: int
+	c.c_name: string
+	c.c_address: string
+	c.c_nationkey: int
+	c.c_phone: string
+	c.c_acctbal: double
+	c.c_mktsegment: string
+	c.c_comment: string
+Select CNF:	
+	( Att 0 from left record = Att 3 from right record (Int)) 
+
+
+****** Select Operation : File *******
+
+Input DB File: customer
+Output Pipe: 0
+Output Schema: 
+	c.c_custkey: int
+	c.c_name: string
+	c.c_address: string
+	c.c_nationkey: int
+	c.c_phone: string
+	c.c_acctbal: double
+	c.c_mktsegment: string
+	c.c_comment: string
+Select CNF : 
+	
+
+****** GroupBy Operation ******
+
+Input Pipe:	4
+Output Pipe: 5
+Output Schema: 
+	sum: double
+	r.r_regionkey: int
+Group By OrderMaker: 
+NumAtts =     1
+  0:     4 Int
+
+Group By Function: 
+
+
+****** Project Operation ******
+
+Input Pipe: 5
+Output Pipe: 6
+Output Schema: 
+	sum: double
+Attributes to keep: 
+	0, 
+
+***************************************************************************************************************************
